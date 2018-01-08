@@ -1,0 +1,2 @@
+endpoit:
+  pivotal: http://api.run.pivotal.io/v2/info
