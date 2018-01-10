@@ -1,3 +1,8 @@
 key:
   decode: "decoded from"
   encode: "encoded from"
+
+krypto:
+  connectionRequestTimeout: 10000
+  connectionTimeout: 10000
+  readTimeout: 10000
