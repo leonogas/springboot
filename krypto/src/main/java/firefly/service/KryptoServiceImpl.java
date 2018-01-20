@@ -11,6 +11,9 @@ import org.springframework.util.Base64Utils;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.support.RestGatewaySupport;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * Created by leonogas on 21/12/2017.
@@ -25,7 +28,7 @@ public class KryptoServiceImpl extends RestGatewaySupport implements KryptoServi
     private String decode;
 
     private RestTemplate restTemplate;
-
+    private static final Charset UTF_8 = StandardCharsets.UTF_8;
     private static final Logger logger = LoggerFactory.getLogger(KryptoServiceImpl.class);
 
     public KryptoServiceImpl(RestTemplate restTemplate) {
@@ -37,11 +40,12 @@ public class KryptoServiceImpl extends RestGatewaySupport implements KryptoServi
 
     @Override
     public String encode(String s) {
-        return this.encode;
+        return Base64.getEncoder().encodeToString(s.getBytes(UTF_8));
     }
 
     @Override
     public String decode(String s) {
-        return this.decode;
+        byte[] decodedString = Base64.getDecoder().decode(s.getBytes(UTF_8));
+        return new String(decodedString, UTF_8);
     }
 }

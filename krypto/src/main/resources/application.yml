@@ -6,3 +6,16 @@ krypto:
   connectionRequestTimeout: 10000
   connectionTimeout: 10000
   readTimeout: 10000
+
+firefly.OperationalTokenService.V1:
+  keyStore:
+    name: "classpath:secret.jks"
+    type: "JCEKS"
+    password: "changeit"
+  secret:
+    name: "operationalTokenSecret"
+    password: "changeit"
+  cypher:
+    algorithm: "AES/CBC/PKCS5Padding"
+    iv: 16
+    expiration: 300
